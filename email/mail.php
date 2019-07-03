@@ -7,18 +7,19 @@ namespace jsys\types\email;
 
 class Mail
 {
-    private $to ;
-    private $cc ;
-    private $bcc ;
-    private $subject;
-    private $message;
-    public function __construct(RecipientInterface $to,RecipientInterface $cc, RecipientInterface $bcc,Subject $subject,Message $message )
+    private $to = [];
+    private $cc = [];
+    private $bcc = [];
+    private $subject = [];
+    private $body = [];
+
+    public function __construct(RecipientInterface $to, RecipientInterface $cc, RecipientInterface $bcc, Subject $subject, Body $body)
     {
         $this->to = $to->getRecipient();
         $this->cc = $cc->getRecipient();
         $this->bcc = $bcc->getRecipient();
-        $this->subject = $subject->getSubject();
-        $this->message = $message->getMessage();
+        $this->subject = $subject->value();
+        $this->body = $body->value();
     }
 
     /**
@@ -44,12 +45,13 @@ class Mail
     {
         return $this->bcc;
     }
+
     /**
      * @return string
      */
-    public function getMessage(): string
+    public function value(): string
     {
-        return $this->message;
+        return $this->body;
     }
 
     /**

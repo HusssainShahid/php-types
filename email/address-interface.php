@@ -5,7 +5,8 @@ namespace jsys\types\email;
 interface AddressInterface
 {
 
-    public function getEmail():string;
+    public function value():string;
+    public function __toString();
 }
 
 ?>

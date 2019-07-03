@@ -2,9 +2,8 @@
 
 namespace jsys\types\email;
 
-interface SubjectInterface
+interface BodyInterface
 {
     public function value():string;
     public function __toString();
 }
-

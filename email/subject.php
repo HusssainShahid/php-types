@@ -8,17 +8,21 @@ namespace jsys\types\email;
 class Subject implements SubjectInterface
 {
     private $subject;
-    const MAX_LENGTH = 1024;
+    const MAX_LENGTH = 78;
 
     public function __construct(string $subject)
     {
         if (strlen($subject) > self::MAX_LENGTH) {
-            throw new \InvalidArgumentException('Given string ' .self::MAX_LENGTH. ' should not be greater then 1024', 1004);
+            throw new \InvalidArgumentException('Given string should not be greater then 78', 1004);
         }
         $this->subject = $subject;
     }
 
-    public function getSubject(): string
+    public function value(): string
+    {
+        return $this->subject;
+    }
+    public function __toString()
     {
         return $this->subject;
     }

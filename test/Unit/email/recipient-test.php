@@ -31,7 +31,7 @@ class RecipientTest extends TestCase
         $emailAddress = new Recipient($testValidEmail,$recipient);
         $this->assertInstanceOf('jsys\types\email\Recipient', $emailAddress);
         $this->assertEquals('jsys\types\email\Recipient', get_class($emailAddress));
-        $this->assertEquals($emailAddress->getEmail(), $emailAddress->getEmail(), 'Both must get the same value');
+        $this->assertEquals($emailAddress->value(), $emailAddress->value(), 'Both must get the same value');
     }
 
     public function tearDown(): void

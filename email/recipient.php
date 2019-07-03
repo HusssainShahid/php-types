@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Hussnain Shahid
- * Date: 6/28/2019
- * Time: 9:28 AM
- */
 declare(strict_types=1);
 
 namespace jsys\types\email;
@@ -19,10 +13,10 @@ class Recipient implements AddressInterface,RecipientInterface,NameInterface
     public function __construct(AddressInterface $address,string $recipient,NameInterface $name=null)
 {
         $this->recipient = $recipient;
-        $this->address = $address->getEmail();
+        $this->address = $address->value();
         $this->name = $name;
     }
-   public function getEmail(): string
+   public function value(): string
    {
        return $this->address;
    }
@@ -33,6 +27,10 @@ class Recipient implements AddressInterface,RecipientInterface,NameInterface
     public function getName(): string
     {
         // TODO: Implement getName() method.
+    }
+    public function __toString()
+    {
+        return $this->recipient;
     }
 
 }

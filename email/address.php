@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Hussnain Shahid
- * Date: 6/28/2019
- * Time: 9:28 AM
- */
 declare(strict_types=1);
 
 namespace jsys\types\email;
@@ -22,7 +16,11 @@ class Address implements AddressInterface
         $this->email = $email;
     }
 
-    public function getEmail(): string
+    public function value(): string
+    {
+        return $this->email;
+    }
+    public function __toString()
     {
         return $this->email;
     }
